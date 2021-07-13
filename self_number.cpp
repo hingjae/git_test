@@ -13,42 +13,35 @@ n을 d(n)의 생성자라고 한다. 위의 수열에서 33은 39의 생성자이고, 39는 51의 생성자
 
 10000보다 작거나 같은 셀프 넘버를 한 줄에 하나씩 출력하는 프로그램을 작성하시오.
 */
+/**/
 #include<iostream>
-#include<cstdio>
-#define N 10001
+#define MAX 10001
 using namespace std;
-bool arr[N];
-
-int solution(int n){
-    int sum = n;    //자기 자신을 먼저 더해주고
- 
-    while(1){   // 각 자리수의 숫자를 더해야하므로 1의 자리를 계속 더해준다.
- 
-        if(n == 0) break; //0이 되면 break
-        sum += n%10;      //1의 자리 더해주기
-        n = n/10;         //한자리씩 없애기
- 
-    }
- 
-    return sum;
+bool array[MAX];
+int not_self_number(int num)
+{
+	int sum = num;
+	while(1){
+		if(num == 0) break;
+		sum += num % 10; // 1의 자리 숫자를 더함 
+		num = num/10; // 한자리씩 없앰. 
+	}
+	return sum;
 }
- 
- 
-int main(void){
- 
-    for(int i=1; i<N; i++){
-        int idx = solution(i);
- 
-        if(idx <= N){
-            arr[idx] = true;    //셀프넘버 아닌 수 true 로 변경
-        }
-    }
- 
-    //출력
-    for(int i=1; i<N; i++){
-        if(!arr[i]) printf("%d\n", i);
-    }
- 
-    return 0;
+int main(void)
+{
+	int i, notSelfNumber;
+	for(i = 1; i < MAX; i++) {
+		notSelfNumber = not_self_number(i);
+		if(i <= MAX){
+			array[notSelfNumber] = true;
+		}
+	}
+	for(i = 1; i < MAX; i++){
+		if(!array[i]) {
+			cout << i << endl;
+		}
+	}
+	
+	return 0;
 }
-
