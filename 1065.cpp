@@ -7,7 +7,6 @@
 출력
 첫째 줄에 1보다 크거나 같고, N보다 작거나 같은 한수의 개수를 출력한다.
 */
-
 #include<iostream>
 using namespace std;
 
@@ -49,3 +48,4 @@ int main(void)
 	}
 	return 0;
 }
+
